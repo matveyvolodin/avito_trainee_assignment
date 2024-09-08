@@ -10,8 +10,11 @@ by_category_dropdown = s('(//span[@class="ant-select-selection-item"])[2]')
 genre_elements = ss('//div[contains(@class, "ant-typography css-17a39f8") and text()="Genre: "]')
 paginator_next_page_button = s('(//button[@class="ant-pagination-item-link"])[2]')
 
+game_card_container = s('(//div[@class="ant-card-body"])[1]')
+back_to_main_button = s('//button[@type="button"]')
 
-def visit_page(url):
+
+def visit(url):
     browser.open(url)
 
 

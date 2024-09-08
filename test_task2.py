@@ -1,6 +1,8 @@
 import allure
 import pytest
-from page_filters import *
+from selene import browser
+from pages_task2 import *
+from time import sleep
 
 
 @pytest.mark.parametrize('genre, expected_actual_text',
@@ -14,9 +16,9 @@ from page_filters import *
                              ("social", "Social")
                          ]
                          )
-@allure.title('TC_001_01 | Filters > Filtering by category: mmorpg')
+@allure.title('TC_001_01 | Filters > Filtering by category')
 def test_filtering_by_category(genre, expected_actual_text):
-    visit_page(main_page_url)
+    visit(main_page_url)
     by_category_dropdown.click()
     select_dropdown_by_genre_option(genre)
     while True:
@@ -27,4 +29,12 @@ def test_filtering_by_category(genre, expected_actual_text):
             paginator_next_page_button.should(be.visible).click()
         else:
             break
+
+
+@allure.title('TC_002_01 | Redirecting > Redirecting to the main page using the "Back to main" button')
+def test_redirecting_to_the_main_page_using_back_to_main_button():
+    visit(main_page_url)
+    game_card_container.should(be.clickable).click()
+    back_to_main_button.should(be.clickable).click()
+    browser.should(have.url(main_page_url))
 
