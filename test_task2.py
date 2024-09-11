@@ -2,6 +2,7 @@ import allure
 import pytest
 from pages_task2 import *
 from time import sleep
+from selene import be, have, browser, query
 
 
 @pytest.mark.parametrize('genre, expected_actual_text',
@@ -10,7 +11,7 @@ from time import sleep
                              ("shooter", "Shooter"),
                              ("strategy", "Strategy"),
                              ("moba", "MOBA"),
-                             ("racing", "RACING"),
+                             ("racing", "Racing"),
                              ("sports", "Sports"),
                              ("social", "Social")
                          ]
@@ -20,15 +21,20 @@ def test_filtering_by_category(genre, expected_actual_text):
     visit(main_page_url)
     by_category_dropdown.click()
     select_dropdown_by_genre_option(genre)
-    # Цикл проверки жанра после фильтрации по category по всем страницам пагинатора
-    while True:
-        genre_elements.should(have.size_greater_than(0))
-        for element in genre_elements:
-            element.should(have.text(expected_actual_text))
-        if paginator_next_page_button.should(be.clickable):
-            paginator_next_page_button.should(be.visible).click()
-        else:
-            break
+    # Цикл проверки жанра карточек в выдаче после фильтрации по category на всех страницах пагинатора
+    check_genre(expected_actual_text)
+
+
+@allure.title('TC_001_08 | Filters > Attempt to filter by category: ("not chosen"')
+def test_filtering_by_category_no_chosen():
+    visit(main_page_url)
+    by_category_dropdown.click()
+    select_dropdown_by_genre_option("mmorpg")
+    by_category_dropdown.click()
+    select_dropdown_by_genre_option("not chosen")
+    full_genre_set = {"MMORPG", "Shooter", "Strategy", "MOBA", "Racing", "Sports", "Social"}
+    actual_genre_set = create_actual_unsorted_genre_set()
+    assert full_genre_set.issubset(actual_genre_set)
 
 
 @allure.title('TC_002_01 | Redirecting > Redirecting to the main page using the "Back to main" button')
@@ -46,7 +52,7 @@ def test_navigating_using_the_paginator_number_button():
     # Созданием множества с названиями игр с первой страницы пагинатора в переменной titles_set_page1
     titles_set_page1 = create_game_titles_set()
     paginator_number2_button.should(be.clickable).click()
-    # Проверка  2 кнопки пагинатора на "активность"
+    # Проверка 2 кнопки пагинатора на "активность"
     paginator_number2_button.should(have.css_class('ant-pagination-item-active'))
     # Созданием множества с названиями игр со второй страницы пагинатора в переменной titles_set_page2
     titles_set_page2 = create_game_titles_set()

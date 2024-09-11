@@ -75,6 +75,19 @@
 **Ожидаемый результат:**
 1. На всех страницах пагинатора  в разделе "Games List Below" отображаются только те карточки игр, "Genre" которых соответствует "Social"
 
+### TC_001_08 | Filters > Attempt to filter by category: "not chosen"
+**Приоритет:** Средний
+
+**Шаги воспроизведения:**
+1. Посетить страницу [Main page](https://makarovartem.github.io/frontend-avito-tech-test-assignment/)
+2. Кликнуть дропдаун "Filter by category"
+3. В открывшемся дропдауне выбрать опцию "social"
+4. Кликнуть дропдаун "Filter by category"
+5. В открывшемся дропдауне выбрать опцию "not chosen"
+
+**Ожидаемый результат:**
+1. В выдаче отображаются карточки игр всех доступных категорий
+
 ### TC_002_01 | Redirecting > Redirecting to the main page using the "Back to main" button
 **Приоритет:** Средний (есть воркэраунд, т.к. можно вернуться на предыдыдущую страницу кнопкой браузера приоритет снижен) 
 
