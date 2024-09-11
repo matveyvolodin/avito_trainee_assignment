@@ -1,6 +1,5 @@
 import allure
 import pytest
-from selene import browser
 from pages_task2 import *
 from time import sleep
 
@@ -63,7 +62,6 @@ def test_navigating_using_the_paginator_next_page_button():
     paginator_number2_button.should(have.css_class('ant-pagination-item-active'))
     titles_set_page2 = create_game_titles_set()
     assert not titles_set_page1.intersection(titles_set_page2)
-    sleep(3)
 
 
 @allure.title('TC_003_03 | Paginator > Navigating using the paginator "Previous Page" button')
@@ -75,4 +73,4 @@ def test_navigating_using_the_paginator_previous_page_button():
     paginator_number2_button.should(have.css_class('ant-pagination-item-active'))
     titles_set_page2 = create_game_titles_set()
     assert not titles_set_page3.intersection(titles_set_page2)
-    sleep(3)
+
