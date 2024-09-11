@@ -76,7 +76,7 @@
 1. На всех страницах пагинатора  в разделе "Games List Below" отображаются только те карточки игр, "Genre" которых соответствует "Social"
 
 ### TC_001_08 | Filters > Attempt to filter by category: "not chosen"
-**Приоритет:** Средний
+**Приоритет:** Высокий
 
 **Шаги воспроизведения:**
 1. Посетить страницу [Main page](https://makarovartem.github.io/frontend-avito-tech-test-assignment/)

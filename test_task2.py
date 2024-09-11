@@ -2,7 +2,7 @@ import allure
 import pytest
 from pages_task2 import *
 from time import sleep
-from selene import be, have, browser, query
+from selene import be, have, browser
 
 
 @pytest.mark.parametrize('genre, expected_actual_text',
