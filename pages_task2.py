@@ -8,8 +8,10 @@ main_page_url = "https://makarovartem.github.io/frontend-avito-tech-test-assignm
 # Locators
 by_category_dropdown = s('(//span[@class="ant-select-selection-item"])[2]')
 genre_elements = ss('//div[contains(@class, "ant-typography css-17a39f8") and text()="Genre: "]')
-paginator_next_page_button = s('(//button[@class="ant-pagination-item-link"])[2]')
-paginator_number_button = s('(//li[@title=2])[1]')
+paginator_number2_button = s('(//li[@title=2])[1]')
+paginator_number3_button = s('(//li[@title=3])[1]')
+paginator_next_page_button = s('(//li[@title="Next Page"])[1]')
+paginator_previous_page_button = s('(//li[@title="Previous Page"])[1]')
 
 game_card_container = s('(//div[@class="ant-card-body"])[1]')
 back_to_main_button = s('//button[@type="button"]')
