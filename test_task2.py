@@ -1,7 +1,6 @@
 import allure
 import pytest
 from pages_task2 import *
-from time import sleep
 from selene import be, have, browser
 
 
@@ -56,7 +55,7 @@ def test_navigating_using_the_paginator_number_button():
     paginator_number2_button.should(have.css_class('ant-pagination-item-active'))
     # Созданием множества с названиями игр со второй страницы пагинатора в переменной titles_set_page2
     titles_set_page2 = create_game_titles_set()
-    # Проверка пересечения множеств (игры, отображенные на обеих страницах не повторяются)
+    # Проверка пересечения множеств (игры, отображенные на страницах не повторяются)
     assert not titles_set_page1.intersection(titles_set_page2)
 
 
